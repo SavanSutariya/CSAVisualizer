@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSA Visualizer</title>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="text-center my-5">Scheduling Algorithm Visualizer</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <h4>Process Table</h4>
+                <form id="add-process-form">
+                    <div class="form-group">
+                        <label for="process-name">Process Name</label>
+                        <input type="text" class="form-control" id="process-name" placeholder="Enter process name">
+                    </div>
+                    <div class="form-group">
+                        <label for="burst-time">Burst Time</label>
+                        <input type="number" class="form-control" id="burst-time" placeholder="Enter burst time">
+                    </div>
+                    <div class="form-group">
+                        <label for="arrival-time">Arrival Time</label>
+                        <input type="number" class="form-control" id="arrival-time" placeholder="Enter arrival time">
+                    </div>
+                    <button type="submit" class="btn btn-primary mt-2">Add Process</button>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <h4>Process Table</h4>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>Burst Time</th>
+                            <th>Arrival Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="process-table-body">
+                        <!-- Process table rows will be added dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
