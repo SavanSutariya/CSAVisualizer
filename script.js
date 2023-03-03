@@ -28,14 +28,27 @@ form.addEventListener('submit', (event) => {
     const nameColumn = document.createElement('td');
     const burstTimeColumn = document.createElement('td');
     const arrivalTimeColumn = document.createElement('td');
+    const deleteBtnTd = document.createElement('td');
+    const deleteBtn = document.createElement('button');
 
     nameColumn.innerText = processName;
     burstTimeColumn.innerText = burstTime;
     arrivalTimeColumn.innerText = arrivalTime;
+    deleteBtn.innerText = 'Delete';
+    // bootstrap classes
+    deleteBtn.classList.add('btn', 'btn-danger', 'btn-sm');
 
+    
+
+    deleteBtn.addEventListener('click', () => {
+        row.remove();
+        processes_table = processes_table.filter((process) => process.name !== processName);
+    });
     row.appendChild(nameColumn);
     row.appendChild(burstTimeColumn);
     row.appendChild(arrivalTimeColumn);
+    row.appendChild(deleteBtnTd);
+    deleteBtnTd.appendChild(deleteBtn);
 
     processTableBody.appendChild(row);
 
