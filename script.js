@@ -46,7 +46,7 @@ tableBody.addEventListener('click', (event) => {
     }
 });
 
-// Short the table by arrival time
+// Short the table by arrival time on the HTML page
 
 function sortTable() {
     var table, rows, switching, i, x, y, shouldSwitch;
