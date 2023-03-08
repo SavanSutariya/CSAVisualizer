@@ -47,7 +47,10 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-3">
+        </div>
+        <div class="row">
+            <div class="col-md-6" style="min-height:300px;">
+                <h4>Process Queue</h4>
                 <table>
                     <thead>
                         <tr>
@@ -61,7 +64,58 @@
                     </tbody>
                 </table>
             </div>
-
+            <div class="col-md-6" style="min-height:300px;">
+                <h4>Ready Queue</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>Burst Time</th>
+                            <th>Arrival Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="ready-queue-table-body">
+                        <!-- Process table rows will be added dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6" style="min-height:300px;">
+                <h4>Processor</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>Burst Time</th>
+                            <th>Arrival Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="processor-table-body">
+                        <!-- Process table rows will be added dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-4" style="min-height:300px;">
+                <h4>Terminated</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Process Name</th>
+                            <th>Burst Time</th>
+                            <th>Arrival Time</th>
+                        </tr>
+                    </thead>
+                    <tbody id="terminated-table-body">
+                        <!-- Process table rows will be added dynamically using JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h4>Processor Log</h4>
+                <!-- Each line from process log -->
+                <div class="process-log" id="process-log"></div>
+            </div>
         </div>
         <pre id="log">
 
@@ -71,6 +125,7 @@
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
     <script src="Algorithms.js"></script>
+    <script src="ui.js"></script>
 </body>
 
 </html>
