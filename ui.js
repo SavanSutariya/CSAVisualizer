@@ -1,3 +1,6 @@
+function ui_update_time(time){
+    document.getElementById('time').innerHTML = time;
+}
 function ui_populate_process_queue(){
     // requires global variable processArray
     var table = document.getElementById('process-queue-table-body');
@@ -34,7 +37,9 @@ function ui_add_into_table(process,tableId){
     burstTime.innerHTML = process.burstTime;
     if(tableId == 'terminated-table-body'){
         var waitingTime = row.insertCell(2);
+        var turnaroundTime = row.insertCell(3);
         waitingTime.innerHTML = process.waitingTime;
+        turnaroundTime.innerHTML = process.turnaroundTime;
     }
     else if(tableId == 'process-queue-table-body'){
         arrivalTime = row.insertCell(2);

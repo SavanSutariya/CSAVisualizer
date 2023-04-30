@@ -29,10 +29,10 @@
                         <input type="number" class="form-control" name="arrivalTime" placeholder="Enter arrival time">
                     </div>
                     <button type="submit" class="btn btn-primary mt-2">Add Process</button>
+                    <a class="btn btn-warning mt-2" onclick="getRandomData(5)">Generate Random</a>
                 </form>
-                <button class="btn btn-warning" onclick="getRandomData(5)">Random</button>
             </div>
-            <div class="col-md-8"> <!-- Process table -->
+            <div class="col-md-6" style="max-height:300px; overflow: scroll"> <!-- Process table -->
                 <h4>Process Table</h4>
                 <table class="table">
                     <thead>
@@ -48,16 +48,40 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-2">
+                <h4>Algorithm</h4>
+                <label for="algorithm-selector">Algorithm</label>
+                <select name="algorithms" id="algorithm-selector" class="form-select">
+                    <option value="fcfs" selected>FCFS</option>
+                    <option value="sjn">SJN</option>
+                    <option value="srtf">SRTF</option>
+                    <option value="roundRobin">Round Robin</option>
+                </select>
+                <!-- Enter time quantumn -->
+                <label for="quantum">Time Quantum</label>
+                <input type="number" class="form-control" id="quantum" value="2" required>
+                <button class="btn btn-primary" onclick="executeAlgorithm()">Play</button>
+            </div>
         </div>
         <hr>
-        <div class="row"> <!-- Algorithm buttons -->
-            <div class="col-md-4"><button class="btn btn-primary" onclick="executeAlgorithm('fcfs')">FCFS</button></div>
+        <div class="row"> <!-- speed -->
+            <div class="col-md-12"> <!-- speed selector-->
+                <h4>Speed</h4>
+                <input type="range" class="form-range" min="1" max="10" id="speed-selector" style="direction: rtl;" oninput="updateSpeed()">
+                <label for="speed-selector">Speed</label>
+                <!-- <center><label for="speed-selector">Speed</label></center> -->
+
+            </div>
         </div>
         <hr>
         <div class="row">
-            <div class="col-md-6" style="min-height:300px;"> <!-- Process queue -->
+            <div class="col-md-1"> <!-- Time -->
+                <h4>Time</h4>
+                <h1 id="time">0</h1>
+            </div>
+            <div class="col-md-4" style="min-height:300px;"> <!-- Process queue -->
                 <h4>Process Queue</h4>
-                <table>
+                <table class="table table-borderless table-active">
                     <thead>
                         <tr>
                             <th>Process Name</th>
@@ -70,9 +94,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-6" style="min-height:300px;"> <!-- Ready queue -->
+            <div class="col-md-3" style="min-height:300px;"> <!-- Ready queue -->
                 <h4>Ready Queue</h4>
-                <table>
+                <table class="table table-borderless table-primary">
                     <thead>
                         <tr>
                             <th>Process Name</th>
@@ -84,9 +108,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-6" style="min-height:300px;"> <!-- Waiting queue -->
+            <div class="col-md-3" style="min-height:300px;"> <!-- Waiting queue -->
                 <h4>Processor</h4>
-                <table>
+                <table class="table table-borderless table-active">
                     <thead>
                         <tr>
                             <th>Process Name</th>
@@ -98,9 +122,9 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4" style="min-height:300px;"> <!-- Terminated queue -->
+            <div class="col-md-8" style="max-height:300px; overflow: scroll"> <!-- Terminated queue -->
                 <h4>Terminated</h4>
-                <table>
+                <table class="table table-borderless table-success">
                     <thead>
                         <tr>
                             <th>Process Name</th>
@@ -114,9 +138,13 @@
                     </tbody>
                 </table>
             </div>
+            <div class="col-md-3 m-md-4" id="results">
+                <h4>Total Waiting time : <span id="avg-waiting-time"></span></h4>
+                <h4>Total Turnaround time : <span id="avg-turnaround-time"></span></h4>
+            </div>
         </div>
         <div class="row">
-            <div class="col-md-8"> <!-- Process log -->
+            <div class="col-md-8" style="max-height:300px; overflow: scroll"> <!-- Process log -->
                 <h4>Processor Log</h4>
                 <!-- Each line from process log -->
                 <div class="process-log" id="process-log"></div>
