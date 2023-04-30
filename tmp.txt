@@ -1,0 +1,55 @@
+[{…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 1}length: 1[[Prototype]]: Array(0)
+Time :4
+[{…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 2}length: 1[[Prototype]]: Array(0)
+Time :5
+(3) [{…}, {…}, {…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 3}1: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 1}2: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 1}length: 3[[Prototype]]: Array(0)
+Time :6
+(3) [{…}, {…}, {…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 4}1: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 2}2: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 2}length: 3[[Prototype]]: Array(0)
+Time :7
+(4) [{…}, {…}, {…}, {…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 5}1: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 3}2: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 3}3: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 1}length: 4[[Prototype]]: Array(0)
+Time :8
+(4) [{…}, {…}, {…}, {…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 6}1: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 4}2: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 4}3: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 2}length: 4[[Prototype]]: Array(0)
+Time :9
+(4) [{…}, {…}, {…}, {…}]0: {name: 'p2', burstTime: 4, arrivalTime: 3, waitingTime: 7}1: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 5}2: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 5}3: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 3}length: 4[[Prototype]]: Array(0)
+Time :10
+(3) [{…}, {…}, {…}]0: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 6}1: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 6}2: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 4}length: 3[[Prototype]]: Array(0)
+Time :11
+(3) [{…}, {…}, {…}]0: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 7}1: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 7}2: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 5}length: 3[[Prototype]]: Array(0)
+Time :12
+(3) [{…}, {…}, {…}]0: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 8}1: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 8}2: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 6}length: 3[[Prototype]]: Array(0)
+Time :13
+(3) [{…}, {…}, {…}]0: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 9}1: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 9}2: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 7}length: 3[[Prototype]]: Array(0)
+Time :14
+(3) [{…}, {…}, {…}]0: {name: 'p1', burstTime: 5, arrivalTime: 5, waitingTime: 10}1: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 10}2: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 8}length: 3[[Prototype]]: Array(0)
+Time :15
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 11}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 9}length: 2[[Prototype]]: Array(0)
+Time :16
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 12}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 10}length: 2[[Prototype]]: Array(0)
+Time :17
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 13}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 11}length: 2[[Prototype]]: Array(0)
+Time :18
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 14}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 12}length: 2[[Prototype]]: Array(0)
+Time :19
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 15}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 13}length: 2[[Prototype]]: Array(0)
+Time :20
+(2) [{…}, {…}]0: {name: 'p3', burstTime: 8, arrivalTime: 5, waitingTime: 16}1: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 14}length: 2[[Prototype]]: Array(0)
+Time :21
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 15}length: 1[[Prototype]]: Array(0)
+Time :22
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 16}length: 1[[Prototype]]: Array(0)
+Time :23
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 17}length: 1[[Prototype]]: Array(0)
+Time :24
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 18}length: 1[[Prototype]]: Array(0)
+Time :25
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 19}length: 1[[Prototype]]: Array(0)
+Time :26
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 20}length: 1[[Prototype]]: Array(0)
+Time :27
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 21}length: 1[[Prototype]]: Array(0)
+Time :28
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 22}length: 1[[Prototype]]: Array(0)
+Time :29
+[{…}]0: {name: 'p0', burstTime: 8, arrivalTime: 7, waitingTime: 23}length: 1[[Prototype]]: Array(0)
+Time :30
+[]

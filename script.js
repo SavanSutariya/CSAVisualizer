@@ -12,8 +12,10 @@ function insertIntoTable(data) { // Insert data into the table
     }
     // Check if the burst time is a number
     if (isNaN(data.burstTime)) {
+        //throw an exception
         alert('Burst time must be a number');
         return false;
+        
     }
     // Check if the arrival time is a number
     if (isNaN(data.arrivalTime)) {

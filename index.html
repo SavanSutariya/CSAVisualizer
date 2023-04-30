@@ -13,7 +13,7 @@
     <div class="container">
         <h2 class="text-center my-5">Scheduling Algorithm Visualizer</h2>
         <div class="row">
-            <div class="col-md-4">
+            <div class="col-md-4"> <!-- Add process form -->
                 <h4>Process Table</h4>
                 <form id="add-process-form">
                     <div class="form-group">
@@ -30,8 +30,9 @@
                     </div>
                     <button type="submit" class="btn btn-primary mt-2">Add Process</button>
                 </form>
+                <button class="btn btn-warning" onclick="getRandomData(5)">Random</button>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-8"> <!-- Process table -->
                 <h4>Process Table</h4>
                 <table class="table">
                     <thead>
@@ -48,8 +49,13 @@
                 </table>
             </div>
         </div>
+        <hr>
+        <div class="row"> <!-- Algorithm buttons -->
+            <div class="col-md-4"><button class="btn btn-primary" onclick="executeAlgorithm('fcfs')">FCFS</button></div>
+        </div>
+        <hr>
         <div class="row">
-            <div class="col-md-6" style="min-height:300px;">
+            <div class="col-md-6" style="min-height:300px;"> <!-- Process queue -->
                 <h4>Process Queue</h4>
                 <table>
                     <thead>
@@ -64,14 +70,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-6" style="min-height:300px;">
+            <div class="col-md-6" style="min-height:300px;"> <!-- Ready queue -->
                 <h4>Ready Queue</h4>
                 <table>
                     <thead>
                         <tr>
                             <th>Process Name</th>
                             <th>Burst Time</th>
-                            <th>Arrival Time</th>
                         </tr>
                     </thead>
                     <tbody id="ready-queue-table-body">
@@ -79,14 +84,13 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-6" style="min-height:300px;">
+            <div class="col-md-6" style="min-height:300px;"> <!-- Waiting queue -->
                 <h4>Processor</h4>
                 <table>
                     <thead>
                         <tr>
                             <th>Process Name</th>
                             <th>Burst Time</th>
-                            <th>Arrival Time</th>
                         </tr>
                     </thead>
                     <tbody id="processor-table-body">
@@ -94,14 +98,15 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-md-4" style="min-height:300px;">
+            <div class="col-md-4" style="min-height:300px;"> <!-- Terminated queue -->
                 <h4>Terminated</h4>
                 <table>
                     <thead>
                         <tr>
                             <th>Process Name</th>
                             <th>Burst Time</th>
-                            <th>Arrival Time</th>
+                            <th>Waiting Time</th>
+                            <th>Turnaround Time</th>
                         </tr>
                     </thead>
                     <tbody id="terminated-table-body">
@@ -111,16 +116,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-8"> <!-- Process log -->
                 <h4>Processor Log</h4>
                 <!-- Each line from process log -->
                 <div class="process-log" id="process-log"></div>
             </div>
         </div>
         <pre id="log">
-
+            
         </pre>
-
     </div>
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
