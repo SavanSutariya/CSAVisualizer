@@ -3,7 +3,7 @@ var readyQueue = [];
 var terminatedProcesses = [];
 var processorLog = [];
 var processor = null;
-var speed = 1000;
+var speed = 600;
 function updateSpeed(){
     speed = (document.getElementById('speed-selector').value)*100;
 }
@@ -43,6 +43,9 @@ function getProcessData() { // get process data from form table and store in pro
 // execute the algorithm
 function executeAlgorithm() {
     var algorithm = document.getElementById("algorithm-selector").value;
+    // empty tables
+    ui_clean_b()
+    // get process data from form table and store in processArray
     getProcessData();
     if (processArray.length < 1) {
         alert('No process');
@@ -51,16 +54,16 @@ function executeAlgorithm() {
     if (algorithm === "fcfs") {
         FCFS();
     } else if (algorithm === "sjn") {
-        SJN(processArray);
+        SJN();
     } else if (algorithm === "rr") {
         var quantum = document.getElementById("quantum").value;
         if (isNaN(quantum)) {
             alert("Quantum must be a number");
         } else {
-            RR(processArray, quantum);
+            RR();
         }
     } else if (algorithm === "srtf") {
-        SRTF(processArray);
+        SRTF();
     }
 }
 function processArrayToQueue(process){//adds the process to readyqueue in both ui and list in js if not already added
@@ -140,6 +143,117 @@ function FCFS() { // First Come First Serve
                 }
             }
             // if there is something in ready queue and processor is empty then load the processor
+            execute(time);
+            // increase waiting time for all the processes in the ready queue
+            for (let i = 0; i < readyQueue.length; i++) {
+                readyQueue[i].waitingTime++;
+                readyQueue[i].turnaroundTime++;
+            }
+            time++;
+            ui_update_time(time);
+        }
+    },speed);
+
+}
+function SJN() { // Shortest Job Next
+    processArray.sort((a, b) => a.arrivalTime - b.arrivalTime);
+    // add all processes to ui process queue
+    ui_populate_process_queue();
+    var time = 0;
+    const intalrval = setInterval(() => {
+        if ((processArray.length == 0 && readyQueue == 0 && processor == null)) { //condition to stop the execution
+            clearInterval(intalrval);
+            showResults();
+        }
+        else{
+            // add process to ready queue if arrival time is equal to time
+            if(processArray.length > 0 && processArray[0].arrivalTime == time){
+                for (let i = 0; processArray[0].arrivalTime <=time; i++) {
+                    processArrayToQueue(processArray[0]);
+                    if (processArray.length == 0){
+                        break;
+                    }
+                }
+            }
+            readyQueue.sort((a, b) => a.burstTime - b.burstTime);
+            execute(time);
+            // increase waiting time for all the processes in the ready queue
+            for (let i = 0; i < readyQueue.length; i++) {
+                readyQueue[i].waitingTime++;
+                readyQueue[i].turnaroundTime++;
+            }
+            time++;
+            ui_update_time(time);
+        }
+    },speed);
+}
+function SRTF() { //Shortest Remaining Time First (Preemptive)
+    processArray.sort((a, b) => a.arrivalTime - b.arrivalTime);
+    // add all processes to ui process queue
+    ui_populate_process_queue();
+    var time = 0;
+    const intalrval = setInterval(() => {
+        if ((processArray.length == 0 && readyQueue == 0 && processor == null)) { //condition to stop the execution
+            clearInterval(intalrval);
+            showResults();
+        }
+        else{
+            // add process to ready queue if arrival time is equal to time
+            if(processArray.length > 0 && processArray[0].arrivalTime == time){
+                for (let i = 0; processArray[0].arrivalTime <=time; i++) {
+                    processArrayToQueue(processArray[0]);
+                    if (processArray.length == 0){
+                        break;
+                    }
+                }
+            }        
+            readyQueue.sort((a, b) => a.burstTime - b.burstTime);
+            // replace with first process in ready queue if burst time of readyqueue is less then processor process
+            if(processor != null && readyQueue.length > 0 && readyQueue[0].burstTime < processor.burstTime){
+                readyQueue.push(processor);
+                ui_remove_from_table(processor,'processor-table-body');
+                ui_add_into_table(processor,'ready-queue-table-body');
+                processor = readyQueue.shift();
+                ui_remove_from_table(processor,'ready-queue-table-body');
+                ui_add_into_table(processor,'processor-table-body');
+            }
+            execute(time);
+            // increase waiting time for all the processes in the ready queue
+            for (let i = 0; i < readyQueue.length; i++) {
+                readyQueue[i].waitingTime++;
+                readyQueue[i].turnaroundTime++;
+            }
+            time++;
+            ui_update_time(time);
+        }
+    },speed);
+}
+
+function RR() { // Round Robin (Preemptive)
+    // First, the processes which are eligible to enter the ready queue enter the ready queue. After entering the first process in Ready Queue is executed for a Time Quantum chunk of time. After execution is complete, the process is removed from the ready queue. Even now the process requires some time to complete its execution, then the process is added to Ready Queue.
+    if(quantum == null || quantum == undefined){
+        quantum = 2;
+    }
+    processArray.sort((a, b) => a.arrivalTime - b.arrivalTime);
+    // add all processes to ui process queue
+    ui_populate_process_queue();
+    var time = 0;
+    const intalrval = setInterval(() => {
+        if ((processArray.length == 0 && readyQueue == 0 && processor == null)) { //condition to stop the execution
+            clearInterval(intalrval);
+            showResults();
+        }
+        else{
+            // add process to ready queue if arrival time is equal to time
+            if(processArray.length > 0 && processArray[0].arrivalTime == time){
+                for (let i = 0; processArray[0].arrivalTime <=time; i++) {
+                    processArrayToQueue(processArray[0]);
+                    if (processArray.length == 0){
+                        break;
+                    }
+                }
+            }
+            // check the time quantumn
             execute(time);
             // increase waiting time for all the processes in the ready queue
             for (let i = 0; i < readyQueue.length; i++) {
