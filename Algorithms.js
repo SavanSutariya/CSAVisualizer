@@ -37,6 +37,7 @@ function getProcessData() { // get process data from form table and store in pro
         };
         process.waitingTime = 0;
         process.turnaroundTime = 0;
+        process.timeQuantum = 0;
         processArray.push(process);
     }
 }
@@ -56,6 +57,8 @@ function executeAlgorithm() {
     } else if (algorithm === "sjn") {
         SJN();
     } else if (algorithm === "rr") {
+        alert("Under Development🚧");
+        return;
         var quantum = document.getElementById("quantum").value;
         if (isNaN(quantum)) {
             alert("Quantum must be a number");
@@ -81,6 +84,7 @@ function execute(time){
     if(processor != null){
         ui_addLogline("process "+processor.name+"executing on "+time);
         processor.burstTime--;
+        processor.timeQuantum++;
         processor.turnaroundTime++;
         if(processor.burstTime==0){
             // remove from processor
@@ -95,6 +99,7 @@ function execute(time){
             processor = readyQueue.shift();
             ui_addLogline("process "+processor.name+"executing on "+time);
             processor.burstTime--;
+            processor.timeQuantum++;
             processor.turnaroundTime++;
             ui_remove_from_table(processor,'ready-queue-table-body');
             ui_add_into_table(processor,'processor-table-body');
@@ -231,7 +236,7 @@ function SRTF() { //Shortest Remaining Time First (Preemptive)
 
 function RR() { // Round Robin (Preemptive)
     // First, the processes which are eligible to enter the ready queue enter the ready queue. After entering the first process in Ready Queue is executed for a Time Quantum chunk of time. After execution is complete, the process is removed from the ready queue. Even now the process requires some time to complete its execution, then the process is added to Ready Queue.
-    if(quantum == null || quantum == undefined){
+    if(quantum == null || quantum == undefined || isNaN(quantum)){
         quantum = 2;
     }
     processArray.sort((a, b) => a.arrivalTime - b.arrivalTime);
@@ -253,7 +258,19 @@ function RR() { // Round Robin (Preemptive)
                     }
                 }
             }
-            // check the time quantumn
+            // check the time quantumn of the process inside the CPU is equal to quantum
+            if(processor != null)
+                console.log(processor.timeQuantum == quantum);
+            if(processor != null && processor.timeQuantum == quantum){
+                //replace it with new process and reset the timeQuantum
+                readyQueue.push(processor);
+                ui_remove_from_table(processor,'processor-table-body');
+                ui_add_into_table(processor,'ready-queue-table-body');
+                processor = readyQueue.shift();
+                ui_remove_from_table(processor,'ready-queue-table-body');
+                ui_add_into_table(processor,'processor-table-body');
+                processor.timeQuantum = 0;
+            }
             execute(time);
             // increase waiting time for all the processes in the ready queue
             for (let i = 0; i < readyQueue.length; i++) {
